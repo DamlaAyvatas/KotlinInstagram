@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "987226196965",
+    "project_id": "kotlininstagram-48acb",
+    "storage_bucket": "kotlininstagram-48acb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987226196965:android:d50518f84e9f6513a5bd0c",
+        "android_client_info": {
+          "package_name": "com.dayvatas.kotlininstagram"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW73OuuNlxkb3dkVYTKBJKiGfNVQZgvY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
