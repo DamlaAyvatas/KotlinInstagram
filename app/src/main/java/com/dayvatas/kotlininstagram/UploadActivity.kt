@@ -2,6 +2,7 @@ package com.dayvatas.kotlininstagram
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.dayvatas.kotlininstagram.databinding.ActivityUploadBinding
 
 class UploadActivity : AppCompatActivity() {
@@ -13,4 +14,8 @@ class UploadActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
     }
+
+    fun selectImageClick(view: View) {}
+    fun upload(view: View) {}
+
 }
