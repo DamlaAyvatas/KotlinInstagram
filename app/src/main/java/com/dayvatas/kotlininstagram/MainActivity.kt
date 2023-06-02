@@ -3,6 +3,7 @@ package com.dayvatas.kotlininstagram
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.dayvatas.kotlininstagram.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signUpClicked(view : View){
-
+        val email = binding.emailText.text.toString()
+        val password = binding.emailText.text.toString()
+        if(email.equals("") || password.equals("")){
+            Toast.makeText(this,"Email or Password cannot be empty!", Toast.LENGTH_LONG).show()
+        } else {
+            auth.createUserWithEmailAndPassword(email, password)
+        }
     }
 }
