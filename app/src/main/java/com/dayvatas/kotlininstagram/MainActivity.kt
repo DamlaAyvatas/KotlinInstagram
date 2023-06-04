@@ -1,5 +1,6 @@
 package com.dayvatas.kotlininstagram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -29,9 +30,16 @@ class MainActivity : AppCompatActivity() {
         val email = binding.emailText.text.toString()
         val password = binding.emailText.text.toString()
         if(email.equals("") || password.equals("")){
-            Toast.makeText(this,"Email or Password cannot be empty!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity,"Enter email and password!", Toast.LENGTH_LONG).show()
         } else {
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+                //success
+                intent = Intent(this@MainActivity, FeedActivity::class.java)
+                startActivity(intent)
+                finish()
+            }.addOnFailureListener {
+                Toast.makeText(this@MainActivity,it.localizedMessage, Toast.LENGTH_LONG ).show()
+            }
         }
     }
 }
