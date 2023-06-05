@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if(email.equals("") || password.equals("")){
             Toast.makeText(this@MainActivity,"Enter email and password", Toast.LENGTH_LONG).show()
         }else{
-            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
                 val intent = Intent(this@MainActivity,FeedActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         if(email.equals("") || password.equals("")){
             Toast.makeText(this@MainActivity,"Enter email and password!", Toast.LENGTH_LONG).show()
         } else {
-            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 //success
-                intent = Intent(this@MainActivity, FeedActivity::class.java)
+                val intent = Intent(this@MainActivity, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
