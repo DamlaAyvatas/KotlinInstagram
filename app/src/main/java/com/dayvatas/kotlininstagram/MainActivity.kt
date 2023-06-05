@@ -20,6 +20,12 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         auth = Firebase.auth
+        val user = auth.currentUser
+        if(user != null ){
+            val intent = Intent(this@MainActivity, FeedActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun signInClicked(view : View){
