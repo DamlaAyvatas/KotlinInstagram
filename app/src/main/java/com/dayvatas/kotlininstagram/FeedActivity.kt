@@ -1,5 +1,6 @@
 package com.dayvatas.kotlininstagram
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -28,7 +29,15 @@ class FeedActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
+        if(item.itemId == R.id.addpost){
+            val intent = Intent(this@FeedActivity, UploadActivity::class.java)
+            startActivity(intent)
+        }else if(item.itemId == R.id.logout){
+            auth.signOut()
+            val intent = Intent(this@FeedActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         return super.onOptionsItemSelected(item)
     }
 }
