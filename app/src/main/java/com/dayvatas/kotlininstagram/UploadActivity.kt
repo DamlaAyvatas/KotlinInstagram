@@ -16,7 +16,12 @@ import com.dayvatas.kotlininstagram.databinding.ActivityUploadBinding
 import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import java.net.URI
 
 class UploadActivity : AppCompatActivity() {
@@ -25,8 +30,8 @@ class UploadActivity : AppCompatActivity() {
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     var selectedPicture : Uri? = null
     private lateinit var auth : FirebaseAuth
-    private lateinit var firestore : Firebase.
-    private lateinit var storage: FirebaseStorage
+    private lateinit var firestore : FirebaseFirestore
+    private lateinit var storage : FirebaseStorage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,9 @@ class UploadActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         registerLauncher()
+        val auth = Firebase.auth
+        val firestore = Firebase.firestore
+        val storage = Firebase.storage
     }
 
     fun selectImageClick(view: View) {
