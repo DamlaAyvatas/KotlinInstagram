@@ -23,6 +23,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import java.net.URI
+import java.util.UUID
 
 class UploadActivity : AppCompatActivity() {
     private lateinit var binding : ActivityUploadBinding
@@ -39,9 +40,9 @@ class UploadActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         registerLauncher()
-        val auth = Firebase.auth
-        val firestore = Firebase.firestore
-        val storage = Firebase.storage
+        auth = Firebase.auth
+        firestore = Firebase.firestore
+        storage = Firebase.storage
     }
 
     fun selectImageClick(view: View) {
@@ -61,7 +62,21 @@ class UploadActivity : AppCompatActivity() {
             activityResultLauncher.launch(intentToGallery)
         }
     }
-    fun upload(view: View) {}
+    fun upload(view: View) {
+        //universal unique id
+        val uuid = UUID.randomUUID()
+        val imageName = "$uuid.jpg"
+        val reference = storage.reference
+        val imageReference = reference.child("images").child(imageName) //reference.child("images/image.jpg")
+        if(selectedPicture != null){
+            imageReference.putFile(selectedPicture!!).addOnSuccessListener {
+                //download url -> firestore
+            }.addOnFailureListener{
+                Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+
+    }
 
     private fun registerLauncher(){
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){result ->
