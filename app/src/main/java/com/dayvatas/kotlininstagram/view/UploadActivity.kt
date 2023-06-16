@@ -1,4 +1,4 @@
-package com.dayvatas.kotlininstagram
+package com.dayvatas.kotlininstagram.view
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,7 +13,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dayvatas.kotlininstagram.databinding.ActivityUploadBinding
-import com.google.android.gms.auth.api.signin.internal.Storage
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -22,8 +21,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
-import java.net.URI
-import java.sql.Timestamp
 import java.util.UUID
 
 class UploadActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.dayvatas.kotlininstagram
+package com.dayvatas.kotlininstagram.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity,"Enter email and password", Toast.LENGTH_LONG).show()
         }else{
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
-                val intent = Intent(this@MainActivity,FeedActivity::class.java)
+                val intent = Intent(this@MainActivity, FeedActivity::class.java)
                 startActivity(intent)
                 finish()
             }.addOnFailureListener {
