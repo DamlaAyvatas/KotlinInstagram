@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.dayvatas.kotlininstagram.databinding.RecyclerRowBinding
 import com.dayvatas.kotlininstagram.model.Post
 
-class FeedRecyclerAdapter (val postArrayList : ArrayList<Post>) :
+class FeedRecyclerAdapter (private val postList : ArrayList<Post>) :
     RecyclerView.Adapter<FeedRecyclerAdapter.FeedHolder>() {
     class FeedHolder(val binding : RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -19,11 +19,14 @@ class FeedRecyclerAdapter (val postArrayList : ArrayList<Post>) :
         return FeedHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: FeedHolder, position: Int) {
+        holder.binding.recyclerEmailText.text = postList.get(position).email
+        holder.binding.recyclerCommentText.text = postList.get(position).comment
+
+
+    }
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return postList.size
     }
 
-    override fun onBindViewHolder(holder: FeedHolder, position: Int) {
-        TODO("Not yet implemented")
-    }
 }
