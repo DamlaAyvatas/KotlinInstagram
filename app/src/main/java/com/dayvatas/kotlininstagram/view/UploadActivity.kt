@@ -45,7 +45,7 @@ class UploadActivity : AppCompatActivity() {
 
     fun selectImageClick(view: View) {
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this@UploadActivity, android.Manifest.permission.READ_EXTERNAL_STORAGE)){
                 Snackbar.make(view, "Permission needed for gallery",Snackbar.LENGTH_INDEFINITE).setAction("Give Permission"){
                     //request permission
                     permissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)

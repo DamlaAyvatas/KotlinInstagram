@@ -47,6 +47,7 @@ class FeedActivity : AppCompatActivity() {
                 if(value != null){
                     if(!value.isEmpty){
                         val documents = value.documents         //dokümanlarımı bir listede aldım
+                        postArrayList.clear()
                         for(document in documents){
                             //casting
                             val comment = document.get("comment") as String
