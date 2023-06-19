@@ -15,6 +15,7 @@ import com.dayvatas.kotlininstagram.model.Post
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.ktx.Firebase
 
 class FeedActivity : AppCompatActivity() {
@@ -40,7 +41,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun getData (){
-        db.collection("Posts").addSnapshotListener{value, error ->
+        db.collection("Posts").orderBy("date", Query.Direction.DESCENDING).addSnapshotListener{ value, error ->
             if(error != null){
                 Toast.makeText(this,error.localizedMessage,Toast.LENGTH_LONG).show()
             }else{
